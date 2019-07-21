@@ -1,12 +1,21 @@
+# This is a sample trusted sites list used by WDAG Trusted Sites Manager.
+#
 # This list configures which sites are allowed to be opened outside of Windows
 # Defender Application Guard. Adding a site here does not immediately allow
-# access to it. You must first import it using Apply-WDAGWhitelist.ps1.
+# access to it. You must first import it using Manage-WdagTrustedSites.ps1.
 #
 # List one site per line. Sites can be prefixed with some modifiers to change
 # how they behave:
 #  . = allow all sub-domains
 #  @ = allow access only outside of Application Guard
 
+# Corporate sites - these cannot be accessed from inside WDAG.
+@.mycompany.com
+@mycompany.sharepoint.com
+@.slack.com
+
+# Trusted sites - these can be accessed inside or outside of WDAG.
 .google.com
 .bing.com
-@.mycompany.com
+.facebook.com
+.stackoverflow.com
