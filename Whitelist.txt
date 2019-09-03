@@ -6,16 +6,20 @@
 #
 # List one site per line. Sites can be prefixed with some modifiers to change
 # how they behave:
-#  . = allow all sub-domains
-#  @ = allow access only outside of Application Guard
+#
+#  *. = allow root domain and all sub domains
+#  .. = only allow sub domains
+#  .  = allow all sites ending with
+#  @  = allow access only outside of Application Guard
+
 
 # Corporate sites - these cannot be accessed from inside WDAG.
-@.mycompany.com
+@*.mycompany.com
 @mycompany.sharepoint.com
-@.slack.com
+@*.slack.com
 
 # Trusted sites - these can be accessed inside or outside of WDAG.
-.google.com
-.bing.com
-.facebook.com
-.stackoverflow.com
+*.google.com
+*.bing.com
+facebook.com
+stackoverflow.com

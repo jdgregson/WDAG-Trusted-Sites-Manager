@@ -43,9 +43,13 @@ function Get-WdagSiteGroups {
     }
     process {
         $sites = Get-Content $TrustedSitesList
-        $sites | ForEach-Object {
-            $site = $_
+        for ($i = 0; $i -lt $sites.length; $i++) {
+            $site = $sites[$i]
             if ($site -notmatch "#" -and -not([string]::IsNullOrEmpty($site))) {
+                if ($site -match "^@?\*\.") {
+                    $sites += $site -replace "^(@)?\*\.","`$1"
+                    $site = $site -replace "^(@)?\*\.","`$1.."
+                }
                 if ($site -match "@") {
                     $site = $site -replace "@"
                     $CloudResources += $site
